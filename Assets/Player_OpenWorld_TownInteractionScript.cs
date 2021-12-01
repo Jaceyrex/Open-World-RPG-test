@@ -8,6 +8,10 @@ public class Player_OpenWorld_TownInteractionScript : MonoBehaviour
     new Openworld_TownScript targetTown;
     private bool enterTownKeyPressed;
 
+    //remove me
+    // I am removed wtff
+    // :)
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +43,8 @@ public class Player_OpenWorld_TownInteractionScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && enterTownKeyPressed == false)
             {
+                VillageStateSaveLoader positionSaver = new VillageStateSaveLoader();
+                positionSaver.SaveData(colission.gameObject.transform.parent.gameObject);
                 enterTownKeyPressed = true;
                 Debug.LogWarning($"Pressed E inside town");
 
