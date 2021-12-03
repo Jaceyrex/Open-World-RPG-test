@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player_OpenWorld_TownInteractionScript : MonoBehaviour
 {
     new Openworld_TownScript targetTown;
+    //new GameObject TextBubble;
+   // new GameObject TextBubbleText;
+
     private bool enterTownKeyPressed;
 
     //remove me
@@ -15,7 +17,8 @@ public class Player_OpenWorld_TownInteractionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //TextBubble = gameObject.transform.GetChild(0).gameObject;
+        //TextBubbleText = TextBubble.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -31,12 +34,22 @@ public class Player_OpenWorld_TownInteractionScript : MonoBehaviour
     void OnTriggerEnter(Collider colission)
     {
         if (colission.gameObject.tag == "Town")
-        {  
-            targetTown = colission.gameObject.GetComponent<Openworld_TownScript>();
+        {
+            targetTown = colission.gameObject.transform.parent.GetComponent<Openworld_TownScript>();
             Debug.LogWarning($"STARTED COLIDING with town: {targetTown.GetTownName()}");
             Debug.LogWarning($"Town destination is: {targetTown.GetSceneName()}");
+
+            //Sets the text of the Bubble_Town Entry child Text_Enter Town Text to say press <key used to enter> to enter <Town name>
+            UpdateTextBubbleText();
+            GetBubble().SetActive(true);
         }
     }
+
+    private void UpdateTextBubbleText()
+    {
+        GetBubble().transform.GetChild(0).GetComponent<TextMesh>().text = $"Press 'E' to enter {Environment.NewLine} {targetTown.GetTownName()} ";
+    }
+
     private void OnTriggerStay(Collider colission)
     {
         if (colission.gameObject.tag == "Town")
@@ -55,10 +68,17 @@ public class Player_OpenWorld_TownInteractionScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
-        SceneManager.UnloadSceneAsync(targetTown.GetSceneName());
+        Debug.LogWarning($"Exited {collision.gameObject.name} collider");
+        //SceneManager.UnloadSceneAsync(targetTown.GetSceneName());
         enterTownKeyPressed = false;
         targetTown = null;
-    }  
+        GetBubble().SetActive(false);
+    }
+
+    private GameObject GetBubble()
+    {
+        return gameObject.transform.GetChild(0).gameObject;
+    }
 }

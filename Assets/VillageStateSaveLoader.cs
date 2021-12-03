@@ -23,6 +23,7 @@ public class VillageStateSaveLoader : MonoBehaviour
         data.x = townToSave.transform.Find("Exit Point").gameObject.transform.position.x;
         data.y = townToSave.transform.Find("Exit Point").gameObject.transform.position.y;
         data.z = townToSave.transform.Find("Exit Point").gameObject.transform.position.z;
+        data.currentTownName = townToSave.GetComponent<Openworld_TownScript>().GetTownName();
 
         bf.Serialize(file, data);
         file.Close();
@@ -77,5 +78,6 @@ class LocationData
     public float x;
     public float y;
     public float z;
+    public string currentTownName;
     //public bool leavingTown;
 }

@@ -33,31 +33,31 @@ public class Player_OpenWorld_Movement : MonoBehaviour
         finalMoveSpeed = 0;
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            Debug.Log("walk key down");
+            //Debug.Log("walk key down");
             finalMoveSpeed = (baseMoveSpeed * walkMod);
 
             if (Input.GetKey(KeyCode.A))
             {
                 dir = Direction.Left;
-                Debug.Log("A AND walk");
+                //Debug.Log("A AND walk");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.D))
             {
                 dir = Direction.Right;
-                Debug.Log("D AND walk");
+                //Debug.Log("D AND walk");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.S))
             {
                 dir = Direction.Down;
-                Debug.Log("S AND walk");
+               // Debug.Log("S AND walk");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.W))
             {
                 dir = Direction.Up;
-                Debug.Log("W AND walk");
+                //Debug.Log("W AND walk");
                 MovePlayer(dir, finalMoveSpeed);
             }
         }
@@ -65,31 +65,31 @@ public class Player_OpenWorld_Movement : MonoBehaviour
         //{
         else if (Input.GetKey(KeyCode.LeftShift))
         {
-            Debug.Log("SPRINT key down");
+            //Debug.Log("SPRINT key down");
             finalMoveSpeed = (baseMoveSpeed * sprintMod);
 
             if (Input.GetKey(KeyCode.A))
             {
                 dir = Direction.Left;
-                Debug.Log("A AND SPRINT");
+                //Debug.Log("A AND SPRINT");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.D))
             {
                 dir = Direction.Right;
-                Debug.Log("D AND SPRINT");
+                //Debug.Log("D AND SPRINT");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.S))
             {
                 dir = Direction.Down;
-                Debug.Log("S AND SPRINT");
+                //Debug.Log("S AND SPRINT");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.W))
             {
                 dir = Direction.Up;
-                Debug.Log("W AND SPRINT");
+                //Debug.Log("W AND SPRINT");
                 MovePlayer(dir, finalMoveSpeed);
             }
         }
@@ -99,25 +99,25 @@ public class Player_OpenWorld_Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 dir = Direction.Left;
-                Debug.Log("A");
+                //Debug.Log("A");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.D))
             {
                 dir = Direction.Right;
-                Debug.Log("D");
+                //Debug.Log("D");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.S))
             {
                 dir = Direction.Down;
-                Debug.Log("S");
+                //Debug.Log("S");
                 MovePlayer(dir, finalMoveSpeed);
             }
             if (Input.GetKey(KeyCode.W))
             {
                 dir = Direction.Up;
-                Debug.Log("W");
+                //Debug.Log("W");
                 MovePlayer(dir, finalMoveSpeed);
             }
         }
@@ -132,25 +132,25 @@ public class Player_OpenWorld_Movement : MonoBehaviour
             case Direction.Up:
                 {
                     this.gameObject.transform.Translate(new Vector3(0.0f,0.0f, finalMoveSpeed * Time.deltaTime));
-                    Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
+                    //Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
                     break;
                 }
             case Direction.Down:
                 {
                     this.gameObject.transform.Translate(new Vector3(0.0f, 0.0f, -finalMoveSpeed * Time.deltaTime));
-                    Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
+                    //Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
                     break;
                 }
             case Direction.Left:
                 {
                     this.gameObject.transform.Translate(new Vector3(-finalMoveSpeed * Time.deltaTime,0.0f,  0.0f));
-                    Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
+                    //Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
                     break;
                 }
             case Direction.Right:
                 {
                     this.gameObject.transform.Translate(new Vector3(finalMoveSpeed * Time.deltaTime,0.0f,  0.0f));
-                    Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
+                    //Debug.Log($"Moving {dir} this fast: {finalMoveSpeed}");
                     break;
                 }
         }
