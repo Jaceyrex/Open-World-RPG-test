@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Town
   - Area Exit
+  - Conversation
+  - UI_Canvas
   layers:
   - Default
   - TransparentFX
